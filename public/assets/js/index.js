@@ -12,6 +12,13 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
+//generates a random number for the id. Will change later
+ const idGen = () => { 
+Math.floor((1 + Math.random()) * 0x10000)
+  .toString(16)
+  .substring(1);
+ };
+
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
@@ -70,6 +77,8 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    //id is currently giving me trouble, so this is a placeholder for the viewing to function properly.
+    id: "1"
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
